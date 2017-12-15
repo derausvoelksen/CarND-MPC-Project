@@ -93,7 +93,7 @@ int main() {
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
     string sdata = string(data).substr(0, length);
-    cout << sdata << endl;
+    //cout << sdata << endl;
     if (sdata.size() > 2 && sdata[0] == '4' && sdata[1] == '2') {
       string s = hasData(sdata);
       if (s != "") {
@@ -115,7 +115,7 @@ int main() {
           *
           */
           
-          double dt = 0.05;
+          double dt = 0.1;
           px += v * cos(psi) * dt;
           py += v * sin(psi) * dt;
           psi += (v / 2.67) * delta * dt;
@@ -135,7 +135,7 @@ int main() {
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
-          msgJson["steering_angle"] = -1 * (steer_value / deg2rad(25));
+          msgJson["steering_angle"] = (steer_value / deg2rad(25)) * -1;
           msgJson["throttle"] = throttle_value;
 
           //Display the MPC predicted trajectory 
@@ -165,7 +165,7 @@ int main() {
 
 
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          // std::cout << msg << std::endl;
           // Latency
           // The purpose is to mimic real driving conditions where
           // the car does actuate the commands instantly.

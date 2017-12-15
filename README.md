@@ -29,7 +29,7 @@ In order to let the vehile follow the track properly, the cost function contains
 ## Timesteps
 
 N gives the amount of steps, that are taken into consideration. So high values of N decreases the performance of the MPC drastically. The time delta between eaech step (dt) needs also to be considered. Too large values (e.g. 0.5) did not work at all.
-I came down to 0.15, and in combination of N = 15 the controller "sees" far and precise enough.
+I came down to 0.15, and in combination of N = 10 the controller "sees" far and precise enough.
 
 ## Preprocessing
 
